@@ -1,0 +1,22 @@
+{
+  "name": "test-mongodb-version",
+  "version": "1.0.0",
+  "description": "A template repo for CircleCI Projects",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "mongodb": "^3.6.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ogii-test/test-mongodb-version.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ogii-test/test-mongodb-version/issues"
+  },
+  "homepage": "https://github.com/ogii-test/test-mongodb-version#readme"
+}
