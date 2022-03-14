@@ -19,8 +19,15 @@ const uri = 'mongodb://localhost:27017/test'
 
 MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
   if (err) throw err;
-  const dbName = db.db("dbName");
-  dbName.collection("collectionName").find().toArray(function(err, res) {
+  const dbo = db.db("dbName");
+  
+  dbo.createCollection("testcollection", function(err, res) {
+    if (err) throw err;
+    console.log("Collection created!");
+    db.close();
+  });
+  
+  dbName.collection("testcollection").find().toArray(function(err, res) {
     if (err) throw err;
     console.log(res);
     db.close();
