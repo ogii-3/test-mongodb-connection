@@ -13,6 +13,20 @@ jobs:
       - setup_remote_docker:
           version: 20.10.11
       - checkout
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.6.0
+      - run:
+          name: Wait for db
+          command: dockerize -wait http://localhost:27017 -wait-retry-interval 2s -timeout 20s
+      - run: yarn
+      - run:
+          name: Setup environment variables
+          command: |-
+            echo "export $(grep -v '^#' server/test/.env | xargs -d '\n')" >> $BASH_ENV
+            source $BASH_ENV
       - run: npm install
       - run: node app.js
 
