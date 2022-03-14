@@ -2,9 +2,12 @@ version: 2.1
 
 jobs:
   build:
+    environment:
+      ENV: test
     docker:
       - image: circleci/node:12.21.0
       - image: circleci/mongo:3.6
+      - image: cimg/redis:6.2.6
     steps:
       - setup_remote_docker:
           version: 20.10.11
