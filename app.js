@@ -1,5 +1,5 @@
 const {MongoClient} = require('mongodb');
-const uri = 'mongodb://127.0.0.1:27017/test'
+const uri = 'mongodb://localhost:27017/test'
 
 MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
   if (err) throw err;
