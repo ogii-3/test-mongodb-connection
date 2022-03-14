@@ -27,7 +27,7 @@ jobs:
           command: |-
             echo "export $(grep -v '^#' server/test/.env | xargs -d '\n')" >> $BASH_ENV
             source $BASH_ENV
-      - run: yarn app.js
+      - run: yarn
 
 workflows:
   workflow1:
