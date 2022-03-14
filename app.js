@@ -27,7 +27,7 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, (e
     db.close();
   });
   
-  dbName.collection("testcollection").find().toArray(function(err, res) {
+  dbo.collection("testcollection").find().toArray(function(err, res) {
     if (err) throw err;
     console.log(res);
     db.close();
