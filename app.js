@@ -4,17 +4,25 @@ const uri = 'mongodb://localhost:27017/test'
 
 //MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
-const client = new MongoClient(uri, {
+/*const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+});*/
 
-async function main(client) {
+/*async function main(client) {
   // Set debug level
   Logger.setLevel("debug");
   const db = client.db("sample_mflix");
   // Run a sample command to produce logger messages
   await db.command({ isMaster: true });
-}
+}*/
 
-main();
+MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
+  if (err) throw err;
+  const dbName = db.db("dbName");
+  dbName.collection("collectionName").find().toArray(function(err, res) {
+    if (err) throw err;
+    console.log(res);
+    db.close();
+  })
+})
