@@ -24,7 +24,7 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, (e
   dbo.createCollection("testcollection", function(err, res) {
     if (err) throw err;
     console.log("Collection created!");
-    db.close();
+    //db.close();
   });
   
   dbo.collection("testcollection").find().toArray(function(err, res) {
